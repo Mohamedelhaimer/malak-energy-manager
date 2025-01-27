@@ -55,6 +55,10 @@ feedBackFc = {
 def index():
     return render_template('accueil.html')
 
+@app.route('/healthz')
+def healthcheck():
+    return {'status': 'healthy'}, 200
+
 @app.route('/objectport/', methods=['POST'])
 def objectport():
     ip = request.get_json().get('ip_address', '')
